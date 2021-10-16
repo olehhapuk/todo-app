@@ -1,20 +1,12 @@
 import { Box, Input, Button } from '@chakra-ui/react';
 import { useFormik } from 'formik';
-import { nanoid } from 'nanoid';
 
 function TaskEditor({ onCreate }) {
   const formik = useFormik({
     initialValues: {
       text: '',
     },
-    onSubmit: (values) => {
-      const newTask = {
-        ...values,
-        id: nanoid(),
-        completed: false,
-      };
-      onCreate(newTask);
-    },
+    onSubmit: onCreate,
   });
 
   return (
