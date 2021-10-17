@@ -6,7 +6,12 @@ function TaskList({ tasks, onEdit, onDelete }) {
   return (
     <Stack>
       {tasks.map((task) => (
-        <TaskCard key={task.id} {...task} onEdit={onEdit} onDelete={onDelete} />
+        <TaskCard
+          key={task._id}
+          {...task}
+          onEdit={onEdit}
+          onDelete={onDelete}
+        />
       ))}
     </Stack>
   );

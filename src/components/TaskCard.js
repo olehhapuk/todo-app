@@ -2,7 +2,7 @@ import { Box, Button, Text, Input, Checkbox } from '@chakra-ui/react';
 import { useFormik } from 'formik';
 import { useState, useEffect } from 'react';
 
-function TaskCard({ id, text, completed, onEdit, onDelete }) {
+function TaskCard({ _id, text, completed, onEdit, onDelete }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const formik = useFormik({
@@ -20,12 +20,12 @@ function TaskCard({ id, text, completed, onEdit, onDelete }) {
 
   function handleEdit(values) {
     setIsEditing(false);
-    onEdit(id, { text: values.text, completed });
+    onEdit(_id, { text: values.text, completed });
   }
 
   function handleToggleComplete(e) {
     const isChecked = e.target.checked;
-    onEdit(id, { text, completed: isChecked });
+    onEdit(_id, { text, completed: isChecked });
   }
 
   function startEditing() {
@@ -70,7 +70,7 @@ function TaskCard({ id, text, completed, onEdit, onDelete }) {
           </Button>
         </Box>
       )}
-      <Button type="button" colorScheme="red" onClick={() => onDelete(id)}>
+      <Button type="button" colorScheme="red" onClick={() => onDelete(_id)}>
         Delete
       </Button>
     </Box>

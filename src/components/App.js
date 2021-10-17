@@ -55,7 +55,7 @@ function App() {
       .put(`/tasks/${taskId}`, taskData)
       .then((res) => {
         setTasks((prev) =>
-          prev.map((task) => (task.id === taskId ? res.data : task))
+          prev.map((task) => (task._id === taskId ? res.data : task))
         );
         toast({
           title: `Task updated successfully`,
@@ -80,7 +80,7 @@ function App() {
     axios
       .delete(`/tasks/${taskId}`)
       .then(() => {
-        setTasks((prev) => prev.filter((task) => task.id !== taskId));
+        setTasks((prev) => prev.filter((task) => task._id !== taskId));
         toast({
           title: `Task deleted successfully`,
           status: 'success',
